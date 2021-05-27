@@ -85,3 +85,25 @@ echo '<br> Current fuel capacity of the truck : ' . $truck->fuelCapacity . ' km/
 echo $truck->isItFull();
 echo '<br> Current fuel capacity of the truck : ' . $truck->fuelCapacity . ' km/h' . '<br>';
 echo $truck->isItFull();
+
+// exemple d'une seconde instance
+
+$margeTruck = new Camion('blue', 2, 'fuel');
+$margeTruck->fuelCapacity = 80;
+
+echo $margeTruck->forward();
+echo "<br> Current fuel capacity of the Marge's truck : " . $margeTruck->fuelCapacity . ' km/h' . '<br>';
+echo $margeTruck->isItFull();
+echo "<br> Current fuel capacity of the Marge's truck : " . $margeTruck->fuelCapacity . ' km/h' . '<br>';
+echo $margeTruck->isItFull();
+
+// exemple d'une troisième instance blablabla
+
+$homerTruck = new Camion('blue', 2, 'fuel');
+$homerTruck->fuelCapacity = 10;
+
+echo $homerTruck->forward();
+echo "<br> Current fuel capacity of the Homer's truck : " . $homerTruck->fuelCapacity . ' km/h' . '<br>';
+echo $homerTruck->isItFull();
+echo "<br> Current fuel capacity of the Homer's truck : " . $homerTruck->fuelCapacity . ' km/h' . '<br>';
+echo $homerTruck->isItFull();
