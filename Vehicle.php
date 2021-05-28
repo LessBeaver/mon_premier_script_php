@@ -1,11 +1,12 @@
 <?php
 
-class Vehicle
+abstract class Vehicle
 {
-    private string $color;
-    private int $currentSpeed;
-    private int $nbSeats;
-    private int $nbWheels;
+
+    protected string $color;
+    protected int $currentSpeed;
+    protected int $nbSeats;
+    protected int $nbWheels;
 
     public function __construct(string $color, int $nbSeats)
     {
@@ -16,7 +17,7 @@ class Vehicle
     public function forward(): string
     {
         $this->currentSpeed = 15;
-        return " Go ! ";
+        return "Go !";
     }
 
     public function brake(): string
@@ -24,9 +25,10 @@ class Vehicle
         $sentence = "";
         while ($this->currentSpeed > 0) {
             $this->currentSpeed--;
-            $sentence .= " Brake !!! ";
+            $sentence .= "Brake !!!";
         }
-        $sentence .= " Almost died ! ";
+
+        $sentence .= "I'm stopped !";
         return $sentence;
     }
 

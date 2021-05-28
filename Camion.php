@@ -10,23 +10,21 @@ class Camion extends Vehicle
 
     public int $fuelCapacity;
     public int $truckLoad = 0;
+    public int $energy;
 
-    public function __construct(string $color, int $nbSeats, string $energy)
+    public function __construct(int $fuelCapacity, string $color, int $nbSeats, string $energy)
     {
         parent::__construct($color, $nbSeats);
         $this->energy = $energy;
+        $this->fuelCapacity = $fuelCapacity;
     }
 
     public function isItFull()
     {
-        $sentence = "";
-        while ($this->fuelCapacity > 0) {
-            $this->fuelCapacity--;
-            $sentence .= " in filling !";
+        if ($this->truckload < $this->fuelCapacity) {
+            return "in filling";
         }
-
-        $sentence .= " full ! ";
-        return $sentence;
+        return " full ! ";
     }
 
     public function getFuelCapacity(): int
@@ -36,9 +34,7 @@ class Camion extends Vehicle
 
     public function setFuelCapacity(int $fuelCapacity): void
     {
-        if ($fuelCapacity >= 0) {
-            $this->fuelCapacity = $fuelCapacity;
-        }
+        $this->fuelCapacity = $fuelCapacity;
     }
 
     public function getTruckLoad(): int
@@ -62,15 +58,5 @@ class Camion extends Vehicle
             $this->energy = $energy;
         }
         return $this;
-    }
-
-    public function getEnergyLevel(): int
-    {
-        return $this->energyLevel;
-    }
-
-    public function setEnergyLevel(int $energyLevel): void
-    {
-        $this->energyLevel = $energyLevel;
     }
 }

@@ -1,97 +1,37 @@
 <?php
 
-class SimpsonsCar
+require_once 'Vehicle.php';
+class SimpsonsCar extends Vehicle
 {
-    // Constructeur
+
+    public const ALLOWED_ENERGIES = [
+        'fuel',
+        'electric',
+    ];
+
+    private string $energy;
+
+    private int $energyLevel;
+
     public function __construct(string $color, int $nbSeats, string $energy)
     {
-        $this->color = $color;
-        $this->nbSeats = $nbSeats;
-        $this->energy = $energy;
+        parent::__construct($color, $nbSeats);
+        $this->setEnergy = $energy;
     }
 
-    public int $nbWheels;
-    public int $currentSpeed;
-    public string $color = 'yellow';
-    public int $nbSeats = 4;
-    public string $energy = 'gasoline';
-    public int $energyLevel;
-
-    // FORWARD
-    public function forward(): string
-    {
-        $this->currentSpeed = 232;
-
-        return " Here we go !";
-    }
-
-    // BRAKE
-    public function brake(): string
-    {
-        $sentence = "";
-        while ($this->currentSpeed > 0) {
-            $this->currentSpeed--;
-            $sentence .= "This is way too fast !!!";
-        }
-        $sentence .= "Piouuuf, I'm stopped !";
-        return $sentence;
-    }
-
-    // START
-    public function start(): string
-    {
-        $this->currentSpeed = 15;
-
-        return "Go back !";
-    }
-
-    // GETCURRENTSPEED
-    public function getCurrentSpeed(): int
-    {
-        return $this->currentSpeed;
-    }
-
-    public function setCurrentSpeed(int $currentSpeed): void
-    {
-        if ($currentSpeed >= 0) {
-            $this->currentSpeed = $currentSpeed;
-        }
-    }
-
-    // GETCOLOR
-    public function getColor(): string
-    {
-        return $this->color;
-    }
-
-    public function setColor(string $color): void
-    {
-        $this->color = $color;
-    }
-
-    // GETNBSEATS
-    public function getNbSeats(): int
-    {
-        return $this->nbSeats;
-    }
-
-    public function setNbSeats(int $nbSeats): void
-    {
-        $this->nbSeats = $nbSeats;
-    }
-
-    // GETENERGY
     public function getEnergy(): string
     {
         return $this->energy;
     }
 
-    public function setEnergy(string $energy): void
+    public function setEnergy(string $energy): SimpsonsCar
     {
-        $this->energy = $energy;
+        if (in_array($energy, self::ALLOWED_ENERGIES)) {
+            $this->energy = $energy;
+        }
+        return $this;
     }
 
-    // GETENERGYLEVEL
     public function getEnergyLevel(): int
     {
         return $this->energyLevel;
